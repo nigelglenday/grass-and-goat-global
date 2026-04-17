@@ -1,0 +1,43 @@
+name: Daily AR Update
+
+on:
+  schedule:
+    - cron: '0 13 * * 1-5'  # 8am CT weekdays (UTC-5)
+  workflow_dispatch:  # manual trigger
+
+permissions:
+  contents: write  # commit snapshot + markdown back so trends compound
+
+jobs:
+  ar-update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests anthropic python-dotenv
+
+      - name: Run AR report
+        env:
+          CAMPFIRE_API_KEY: ${{ secrets.CAMPFIRE_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: python3 campfire/ar_report.py
+
+      - name: Upload HTML dashboard artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ar-dashboard-${{ github.run_id }}
+          path: reports/ar/*.html
+
+      - name: Commit snapshot + markdown
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/ar/
+          git diff --staged --quiet || git commit -m "AR update $(date -u +%Y-%m-%d)"
+          git push
