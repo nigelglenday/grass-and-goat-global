@@ -1,88 +1,113 @@
 company: Grass & Goat Global, Inc.
-fiscal_year: 2026
-periods: 12  # monthly
+scenario: base_case
 
-# Revenue - subscription goat herd deployments
-revenue:
-  customers:
-    - name: Apple
-      monthly_contract: 45000
-      start_month: 2025-07
-      annual_escalator: 0.03
-    - name: Nvidia
-      monthly_contract: 32000
-      start_month: 2025-08
-      annual_escalator: 0.03
-    - name: Walmart
-      monthly_contract: 28000
-      start_month: 2025-10
-      annual_escalator: 0.03
-    - name: Target
-      monthly_contract: 22000
-      start_month: 2025-10
-      annual_escalator: 0.03
-    - name: Axe Capital
-      monthly_contract: 18000
-      start_month: 2025-11
-      annual_escalator: 0.03
-    - name: ABC Company
-      monthly_contract: 15000
-      start_month: 2026-01
-      annual_escalator: 0.03
-    - name: Merck
-      monthly_contract: 12000
-      start_month: 2026-03
-      annual_escalator: 0.03
-  new_customer_adds:
-    - month: 2026-06
-      monthly_contract: 25000
-    - month: 2026-09
-      monthly_contract: 20000
-  churn_rate_annual: 0.05
+forecast:
+  start_month: 2026-01-01
+  periods: 60  # 5 years monthly
 
-# Headcount plan
+# Acquisition — cohort engine input. Each entry = one quarter of landed logos.
+# 20 quarters for the full 5-year forecast.
+acquisition:
+  cohorts:
+    # Year 1 — 2026
+    - { quarter: 2026-Q1, new_logos: 3, avg_acv: 180000, ramp_months: 3 }
+    - { quarter: 2026-Q2, new_logos: 4, avg_acv: 190000, ramp_months: 3 }
+    - { quarter: 2026-Q3, new_logos: 4, avg_acv: 200000, ramp_months: 3 }
+    - { quarter: 2026-Q4, new_logos: 5, avg_acv: 210000, ramp_months: 3 }
+    # Year 2 — 2027, acceleration
+    - { quarter: 2027-Q1, new_logos: 6, avg_acv: 215000, ramp_months: 3 }
+    - { quarter: 2027-Q2, new_logos: 7, avg_acv: 220000, ramp_months: 3 }
+    - { quarter: 2027-Q3, new_logos: 8, avg_acv: 225000, ramp_months: 3 }
+    - { quarter: 2027-Q4, new_logos: 9, avg_acv: 230000, ramp_months: 3 }
+    # Year 3 — 2028
+    - { quarter: 2028-Q1, new_logos: 10, avg_acv: 235000, ramp_months: 3 }
+    - { quarter: 2028-Q2, new_logos: 11, avg_acv: 240000, ramp_months: 3 }
+    - { quarter: 2028-Q3, new_logos: 12, avg_acv: 245000, ramp_months: 3 }
+    - { quarter: 2028-Q4, new_logos: 13, avg_acv: 250000, ramp_months: 3 }
+    # Year 4 — 2029
+    - { quarter: 2029-Q1, new_logos: 14, avg_acv: 255000, ramp_months: 3 }
+    - { quarter: 2029-Q2, new_logos: 15, avg_acv: 260000, ramp_months: 3 }
+    - { quarter: 2029-Q3, new_logos: 16, avg_acv: 265000, ramp_months: 3 }
+    - { quarter: 2029-Q4, new_logos: 17, avg_acv: 270000, ramp_months: 3 }
+    # Year 5 — 2030
+    - { quarter: 2030-Q1, new_logos: 18, avg_acv: 275000, ramp_months: 3 }
+    - { quarter: 2030-Q2, new_logos: 19, avg_acv: 280000, ramp_months: 3 }
+    - { quarter: 2030-Q3, new_logos: 20, avg_acv: 285000, ramp_months: 3 }
+    - { quarter: 2030-Q4, new_logos: 21, avg_acv: 290000, ramp_months: 3 }
+  s_and_m_monthly_base: 25000
+  s_and_m_variable_per_logo: 15000
+
+retention:
+  gross_retention_annual: 0.92  # 8% annual logo churn
+  net_retention_annual: 1.10    # 10% net expansion
+
+pricing:
+  acv_escalator_annual: 0.03  # price increases on existing book
+
+cogs:
+  direct_labor_pct_revenue: 0.06
+  subcontractor_pct_revenue: 0.05
+  hosting_monthly_base: 4000
+
 headcount:
   existing_count: 14
-  existing_monthly_comp: 125000  # total monthly payroll
+  existing_monthly_comp: 125000  # total monthly payroll pre-benefits
   benefits_rate: 0.25
   annual_raise: 0.03
-  hires:
-    - role: Herd Manager
-      start: 2026-03
-      annual_salary: 85000
-    - role: Dispatch Coordinator
-      start: 2026-04
-      annual_salary: 65000
-    - role: Sales Rep
-      start: 2026-06
-      annual_salary: 95000
-    - role: Field Veterinarian (P/T)
-      start: 2026-07
-      annual_salary: 55000
+  plan:
+    - { role: Herd Manager,          start: 2026-03-01, salary: 85000,  dept: operations }
+    - { role: Dispatch Coordinator,  start: 2026-04-01, salary: 65000,  dept: operations }
+    - { role: Sales Rep,             start: 2026-06-01, salary: 95000,  dept: sales }
+    - { role: Field Veterinarian PT, start: 2026-07-01, salary: 55000,  dept: operations }
+    - { role: Senior Herd Manager,   start: 2026-10-01, salary: 105000, dept: operations }
+    - { role: Marketing Lead,        start: 2027-01-01, salary: 120000, dept: marketing }
+    - { role: Senior Sales Rep,      start: 2027-04-01, salary: 130000, dept: sales }
+    - { role: Controller,            start: 2027-07-01, salary: 140000, dept: ga }
+    - { role: VP Sales,              start: 2028-01-01, salary: 220000, dept: sales }
+    - { role: VP Operations,         start: 2028-04-01, salary: 210000, dept: operations }
+    - { role: CS Manager,            start: 2028-07-01, salary: 115000, dept: operations }
+    - { role: Eng Lead,              start: 2029-01-01, salary: 180000, dept: engineering }
 
-# Operating expenses (monthly)
 opex:
-  rent: 15000
-  utilities: 3500
-  insurance: 4200
-  office_supplies: 1800
-  software_subscriptions: 8500
-  professional_fees: 12000
-  depreciation: 1500
-  travel_entertainment: 3000
-  miscellaneous: 1000
-  # Growth rates
+  rent_monthly: 15000
+  utilities_monthly: 3500
+  insurance_monthly: 4200
+  office_supplies_monthly: 1800
+  software_monthly: 8500
+  professional_fees_monthly: 12000
+  travel_monthly: 3000
+  misc_monthly: 1000
   annual_escalation: 0.03
 
-# COGS
-cogs:
-  direct_labor_pct_of_revenue: 0.06
-  subcontractor_pct_of_revenue: 0.05
+working_capital:
+  dso_days: 45
+  dpo_days: 30
+  deferred_rev_months: 1
 
-# Actuals integration
+balance_sheet_start:
+  cash: 2000000
+  ar: 150000
+  ppe_net: 50000
+  ap: 120000
+  accrued: 45000
+  deferred_rev: 60000
+  safe_notes: 3500000
+  paid_in_capital: 1500000
+  # Opening RE plugs so opening BS balances:
+  # Assets (cash + ar + ppe) = $2.200M
+  # Liab (ap + accrued + def_rev) = $0.225M
+  # Equity (safe + pic + re) must = $1.975M → re = $1.975M − $5.0M = -$3.025M
+  retained_earnings: -3025000
+
+capex:
+  monthly: 4000
+  depreciation_months: 36
+
+metrics:
+  ltv_discount_rate_annual: 0.10
+
 actuals:
   enabled: false
-  # Set to true and provide entity_id to pull from Campfire
   entity_id: 20043
   date_from: 2026-01-01
   date_to: 2026-12-31

@@ -6,6 +6,8 @@ reports/*.xlsx
 reports/*.html
 reports/*.docx
 budget/output/*.xlsx
+budget/out/*
+!budget/out/.gitkeep
 campfire/opex/dashboard.html
 campfire/revenue/dashboard.html
 dashboards/*.html
