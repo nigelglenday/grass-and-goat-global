@@ -1,0 +1,41 @@
+name: Daily Opex Dashboard
+
+on:
+  schedule:
+    - cron: '0 13 * * 1-5'  # 8am ET weekdays
+  workflow_dispatch:  # manual trigger
+
+jobs:
+  build-dashboard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests openpyxl
+
+      - name: Build opex dashboard
+        env:
+          CAMPFIRE_API_KEY: ${{ secrets.CAMPFIRE_API_KEY }}
+        run: python3 -m campfire.opex
+
+      - name: Upload dashboard artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: opex-dashboard
+          path: campfire/opex/dashboard.html
+
+      # Optional: post to Slack
+      # - name: Post to Slack
+      #   env:
+      #     SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+      #   run: |
+      #     curl -F file=@campfire/opex/dashboard.html \
+      #          -F channels=${{ secrets.SLACK_CHANNEL }} \
+      #          -F title="Opex Dashboard - $(date +%Y-%m-%d)" \
+      #          -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
+      #          https://slack.com/api/files.upload

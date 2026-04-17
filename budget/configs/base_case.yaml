@@ -1,0 +1,88 @@
+company: Grass & Goat Global, Inc.
+fiscal_year: 2026
+periods: 12  # monthly
+
+# Revenue - subscription goat herd deployments
+revenue:
+  customers:
+    - name: Apple
+      monthly_contract: 45000
+      start_month: 2025-07
+      annual_escalator: 0.03
+    - name: Nvidia
+      monthly_contract: 32000
+      start_month: 2025-08
+      annual_escalator: 0.03
+    - name: Walmart
+      monthly_contract: 28000
+      start_month: 2025-10
+      annual_escalator: 0.03
+    - name: Target
+      monthly_contract: 22000
+      start_month: 2025-10
+      annual_escalator: 0.03
+    - name: Axe Capital
+      monthly_contract: 18000
+      start_month: 2025-11
+      annual_escalator: 0.03
+    - name: ABC Company
+      monthly_contract: 15000
+      start_month: 2026-01
+      annual_escalator: 0.03
+    - name: Merck
+      monthly_contract: 12000
+      start_month: 2026-03
+      annual_escalator: 0.03
+  new_customer_adds:
+    - month: 2026-06
+      monthly_contract: 25000
+    - month: 2026-09
+      monthly_contract: 20000
+  churn_rate_annual: 0.05
+
+# Headcount plan
+headcount:
+  existing_count: 14
+  existing_monthly_comp: 125000  # total monthly payroll
+  benefits_rate: 0.25
+  annual_raise: 0.03
+  hires:
+    - role: Herd Manager
+      start: 2026-03
+      annual_salary: 85000
+    - role: Dispatch Coordinator
+      start: 2026-04
+      annual_salary: 65000
+    - role: Sales Rep
+      start: 2026-06
+      annual_salary: 95000
+    - role: Field Veterinarian (P/T)
+      start: 2026-07
+      annual_salary: 55000
+
+# Operating expenses (monthly)
+opex:
+  rent: 15000
+  utilities: 3500
+  insurance: 4200
+  office_supplies: 1800
+  software_subscriptions: 8500
+  professional_fees: 12000
+  depreciation: 1500
+  travel_entertainment: 3000
+  miscellaneous: 1000
+  # Growth rates
+  annual_escalation: 0.03
+
+# COGS
+cogs:
+  direct_labor_pct_of_revenue: 0.06
+  subcontractor_pct_of_revenue: 0.05
+
+# Actuals integration
+actuals:
+  enabled: false
+  # Set to true and provide entity_id to pull from Campfire
+  entity_id: 20043
+  date_from: 2026-01-01
+  date_to: 2026-12-31

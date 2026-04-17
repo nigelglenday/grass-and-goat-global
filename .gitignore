@@ -1,0 +1,11 @@
+.env
+.DS_Store
+__pycache__/
+*.pyc
+reports/*.xlsx
+reports/*.html
+reports/*.docx
+budget/output/*.xlsx
+campfire/opex/dashboard.html
+campfire/revenue/dashboard.html
+dashboards/*.html

@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "campfire": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://api.meetcampfire.com/mcp"
+      ],
+      "env": {
+        "API_TOKEN": "${CAMPFIRE_API_KEY}"
+      }
+    }
+  }
+}
