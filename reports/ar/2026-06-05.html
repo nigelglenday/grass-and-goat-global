@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>AR Update 2026-06-05</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  body { font-family: -apple-system,BlinkMacSystemFont,sans-serif; max-width: 960px; margin: 40px auto; padding: 0 20px; color: #1c1c1c; }
+  h1 { margin-bottom: 4px; }
+  .subtitle { color: #888; margin-bottom: 24px; }
+  .kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+  .kpi { background: #f7f7f5; border-radius: 8px; padding: 16px; }
+  .kpi .label { color: #666; font-size: 12px; text-transform: uppercase; letter-spacing: .05em; }
+  .kpi .val { font-size: 28px; font-weight: 600; margin-top: 4px; }
+  .deltas { display: flex; gap: 16px; font-size: 13px; color: #444; margin: 8px 0 24px; }
+  .deltas b { color: #000; }
+  .deltas .prior { margin-left: auto; color: #999; }
+  .narrative { background: #fff8e1; border-left: 3px solid #f6a723; padding: 14px 18px; margin: 20px 0; border-radius: 4px; line-height: 1.5; }
+  .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 24px 0; }
+  .card { background: #fff; border: 1px solid #eee; border-radius: 8px; padding: 16px; }
+  .card h3 { margin: 0 0 8px; font-size: 14px; color: #555; font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #eee; }
+  th { color: #666; font-weight: 500; font-size: 12px; text-transform: uppercase; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  footer { color: #999; font-size: 12px; margin-top: 32px; }
+</style>
+</head><body>
+<h1>AR Update</h1>
+<div class="subtitle">Grass &amp; Goat Global, Inc. · Friday, June 5, 2026</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="label">Total AR (USD)</div><div class="val">$2,566,293</div></div>
+  <div class="kpi"><div class="label">DSO (90d)</div><div class="val">223.6</div></div>
+  <div class="kpi"><div class="label">Open Invoices</div><div class="val">99</div></div>
+</div>
+<div class="deltas">
+          <span>Δ AR <b>+0</b></span>
+          <span>Δ DSO <b>+0.0</b></span>
+          <span>Δ 90+ <b>+0</b></span>
+          <span class="prior">vs 2026-06-04</span>
+        </div>
+
+<div class="narrative"><strong>1. AR flatlined day-over-day—no new receipts, no new invoices, and no movement in aging buckets.</strong> Your 90+ balance held steady at $353.5K across 13 invoices (13.8% of total AR). DSO remains elevated at 223.6 days, signaling systematic collection friction rather than a timing anomaly.<br><br><strong>2. Axe Capital is your concentration risk.</strong> Three invoices totaling $177.5K are outstanding—the oldest at 202 days past due. Combined with Nvidia ($101K across two invoices, one 110 days old) and Target ($162.3K across four invoices with one at 126 days), these three customers represent 44% of your overdue book and $440.8K of stress.<br><br><strong>3. Call Axe Capital today.</strong> The 202-day invoice (INV-0000003, $53.6K) is in dunning hell. Determine if it's a dispute, a budget hold, or avoidance. If it's a dispute, escalate internally to resolve it this week. If it's avoidance, require a payment commitment by end of week or place the account on hold for new subscription renewals.</div>
+
+<div class="charts">
+  <div class="card"><h3>Aging Buckets (USD)</h3><canvas id="buckets"></canvas></div>
+  <div class="card"><h3>AR Trend (last 14 snapshots)</h3><canvas id="trend"></canvas></div>
+</div>
+
+<div class="card">
+  <h3>Top Overdue</h3>
+  <table><thead><tr><th>Days</th><th>Client</th><th>Invoice</th><th>Entity</th><th class=num>Amount (USD)</th></tr></thead>
+  <tbody><tr><td>21d</td><td>Axe Capital</td><td>INV-0000049</td><td>Grass & Goat Global, Inc.</td><td class=num>$64,887</td></tr><tr><td>110d</td><td>Axe Capital</td><td>INV-0000026</td><td>Grass & Goat Global, Inc.</td><td class=num>$58,988</td></tr><tr><td>202d</td><td>Axe Capital</td><td>INV-0000003</td><td>Grass & Goat Global, Inc.</td><td class=num>$53,625</td></tr><tr><td>10d</td><td>Nvidia</td><td>INV-0000050</td><td>Grass & Goat Global, Inc.</td><td class=num>$52,908</td></tr><tr><td>36d</td><td>Target</td><td>INV-0000046</td><td>Grass & Goat Global, Inc.</td><td class=num>$52,030</td></tr><tr><td>99d</td><td>Nvidia</td><td>INV-0000027</td><td>Grass & Goat Global, Inc.</td><td class=num>$48,098</td></tr><tr><td>126d</td><td>Target</td><td>INV-0000023</td><td>Grass & Goat Global, Inc.</td><td class=num>$47,300</td></tr><tr><td>9d</td><td>Target</td><td>INV-0000051</td><td>Grass & Goat Global, Inc.</td><td class=num>$33,009</td></tr><tr><td>89d</td><td>ABC Company</td><td>INV-0000029</td><td>Grass & Goat Global, Inc.</td><td class=num>$32,670</td></tr><tr><td>98d</td><td>Target</td><td>INV-0000028</td><td>Grass & Goat Global, Inc.</td><td class=num>$30,008</td></tr></tbody></table>
+</div>
+
+<footer>Campfire → Claude Haiku → GitHub Actions · generated 2026-06-05T15:54:57</footer>
+
+<script>
+new Chart(document.getElementById('buckets'), {
+  type: 'bar',
+  data: { labels: ["current", "1-30", "31-60", "61-90", "90+"],
+           datasets: [{ label: 'USD', data: [1708830.0, 158790.0, 190668.0, 154458.0, 353547.0],
+                        backgroundColor: ['#8bc34a','#ffc107','#ff9800','#ff5722','#c62828'] }] },
+  options: { plugins:{legend:{display:false}},
+              scales:{y:{ticks:{callback: v => '$' + v.toLocaleString()}}} }
+});
+new Chart(document.getElementById('trend'), {
+  type: 'line',
+  data: { labels: ["2026-05-19", "2026-05-20", "2026-05-21", "2026-05-22", "2026-05-25", "2026-05-26", "2026-05-27", "2026-05-28", "2026-05-29", "2026-06-01", "2026-06-02", "2026-06-03", "2026-06-04", "2026-06-05"],
+           datasets: [
+             { label: 'Total AR', data: [2566293.0, 2566293.0, 2566293.0, 2566293.0, 2566293.0, 2566293.0, 2566293.0, 2566293.0, 2566293.0, 2566293.0, 2566293.0, 2566293.0, 2566293.0, 2566293.0], borderColor:'#1976d2',
+                backgroundColor:'rgba(25,118,210,0.08)', fill:true, yAxisID:'y' },
+             { label: 'DSO', data: [219.1, 219.1, 219.1, 219.1, 216.1, 216.1, 216.1, 216.1, 216.1, 223.6, 223.6, 223.6, 223.6, 223.6], borderColor:'#d81b60',
+                borderDash:[4,4], yAxisID:'y1' }
+           ] },
+  options: { scales: { y: { position:'left', ticks:{callback: v => '$' + v.toLocaleString()} },
+                        y1: { position:'right', grid:{drawOnChartArea:false} } } }
+});
+</script>
+</body></html>
