@@ -1,0 +1,137 @@
+{
+  "as_of": "2026-08-06",
+  "total_ar_usd": 2566293.0,
+  "invoice_count": 99,
+  "dso": 193.6,
+  "revenue_90d_usd": 1192742.23,
+  "buckets": {
+    "current": {
+      "amount_usd": 1297906.0,
+      "count": 45
+    },
+    "1-30": {
+      "amount_usd": 200752.0,
+      "count": 8
+    },
+    "31-60": {
+      "amount_usd": 210172.0,
+      "count": 11
+    },
+    "61-90": {
+      "amount_usd": 158790.0,
+      "count": 4
+    },
+    "90+": {
+      "amount_usd": 698673.0,
+      "count": 31
+    }
+  },
+  "by_currency": {
+    "USD": {
+      "amount": 2566293.0,
+      "count": 99
+    }
+  },
+  "top_overdue": [
+    {
+      "client": "Axe Capital",
+      "entity": "Grass & Goat Global, Inc.",
+      "invoice_number": "INV-0000049",
+      "currency": "USD",
+      "amount_due": 64887.0,
+      "amount_due_usd": 64887.0,
+      "due_date": "2026-05-15",
+      "days_past_due": 83
+    },
+    {
+      "client": "Axe Capital",
+      "entity": "Grass & Goat Global, Inc.",
+      "invoice_number": "INV-0000026",
+      "currency": "USD",
+      "amount_due": 58988.0,
+      "amount_due_usd": 58988.0,
+      "due_date": "2026-02-15",
+      "days_past_due": 172
+    },
+    {
+      "client": "Target",
+      "entity": "Grass & Goat Global, Inc.",
+      "invoice_number": "INV-0000069",
+      "currency": "USD",
+      "amount_due": 57233.0,
+      "amount_due_usd": 57233.0,
+      "due_date": "2026-07-30",
+      "days_past_due": 7
+    },
+    {
+      "client": "Axe Capital",
+      "entity": "Grass & Goat Global, Inc.",
+      "invoice_number": "INV-0000003",
+      "currency": "USD",
+      "amount_due": 53625.0,
+      "amount_due_usd": 53625.0,
+      "due_date": "2025-11-15",
+      "days_past_due": 264
+    },
+    {
+      "client": "Nvidia",
+      "entity": "Grass & Goat Global, Inc.",
+      "invoice_number": "INV-0000050",
+      "currency": "USD",
+      "amount_due": 52908.0,
+      "amount_due_usd": 52908.0,
+      "due_date": "2026-05-26",
+      "days_past_due": 72
+    },
+    {
+      "client": "Target",
+      "entity": "Grass & Goat Global, Inc.",
+      "invoice_number": "INV-0000046",
+      "currency": "USD",
+      "amount_due": 52030.0,
+      "amount_due_usd": 52030.0,
+      "due_date": "2026-04-30",
+      "days_past_due": 98
+    },
+    {
+      "client": "Nvidia",
+      "entity": "Grass & Goat Global, Inc.",
+      "invoice_number": "INV-0000027",
+      "currency": "USD",
+      "amount_due": 48098.0,
+      "amount_due_usd": 48098.0,
+      "due_date": "2026-02-26",
+      "days_past_due": 161
+    },
+    {
+      "client": "Target",
+      "entity": "Grass & Goat Global, Inc.",
+      "invoice_number": "INV-0000023",
+      "currency": "USD",
+      "amount_due": 47300.0,
+      "amount_due_usd": 47300.0,
+      "due_date": "2026-01-30",
+      "days_past_due": 188
+    },
+    {
+      "client": "ABC Company",
+      "entity": "Grass & Goat Global, Inc.",
+      "invoice_number": "INV-0000052",
+      "currency": "USD",
+      "amount_due": 35937.0,
+      "amount_due_usd": 35937.0,
+      "due_date": "2026-06-08",
+      "days_past_due": 59
+    },
+    {
+      "client": "Target",
+      "entity": "Grass & Goat Global, Inc.",
+      "invoice_number": "INV-0000051",
+      "currency": "USD",
+      "amount_due": 33009.0,
+      "amount_due_usd": 33009.0,
+      "due_date": "2026-05-27",
+      "days_past_due": 71
+    }
+  ]
+}
